@@ -71,6 +71,31 @@
       "hash": "4b92f07738266bb72c62484eeaf8552520f337a2d21a9815e942800b"
     },
     {
+      "title": "multisig.multisig.spend",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/multisig~1Datum"
+        }
+      },
+      "redeemer": {
+        "title": "_redeemer",
+        "schema": {
+          "$ref": "#/definitions/multisig~1Redeemer"
+        }
+      },
+      "compiledCode": "59019301010029800aba2aba1aba0aab9faab9eaab9dab9a488888896600264653001300800198041804800cc0200092225980099b8748008c01cdd500144c8cc896600266e1d2000300a375400d15980098059baa0068acc00528c56600266e1d2000300a375400313232325980099b89375a6022004646600200264660020026eb0c04c014896600200314bd7044cc896600264660020026eb0c05cc060c060c060c060c060c060c060c060c050dd5006912cc00400629422b30013371e6eb8c06000401229462660040046032002809901644cc054dd480119802002000c4cc0100100050111bae30140013015001404844b30010018a4001133700900119801001180a000a022899198008009bac301230133013300f375401044b30010018a508acc004cdd7980998081baa301330103754602600200714a313300200230140014038808a294100c19ba548000cc03cc040c0440052f5c0602000260166ea8c038c02cdd5000c5900945900945900c45900918060009806180680098041baa0028b200c180400098019baa0088a4d1365640041",
+      "hash": "64e24f0e0118039132cc741f176caf85a766d18caf68b19a171fe9a4"
+    },
+    {
+      "title": "multisig.multisig.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "compiledCode": "59019301010029800aba2aba1aba0aab9faab9eaab9dab9a488888896600264653001300800198041804800cc0200092225980099b8748008c01cdd500144c8cc896600266e1d2000300a375400d15980098059baa0068acc00528c56600266e1d2000300a375400313232325980099b89375a6022004646600200264660020026eb0c04c014896600200314bd7044cc896600264660020026eb0c05cc060c060c060c060c060c060c060c060c050dd5006912cc00400629422b30013371e6eb8c06000401229462660040046032002809901644cc054dd480119802002000c4cc0100100050111bae30140013015001404844b30010018a4001133700900119801001180a000a022899198008009bac301230133013300f375401044b30010018a508acc004cdd7980998081baa301330103754602600200714a313300200230140014038808a294100c19ba548000cc03cc040c0440052f5c0602000260166ea8c038c02cdd5000c5900945900945900c45900918060009806180680098041baa0028b200c180400098019baa0088a4d1365640041",
+      "hash": "64e24f0e0118039132cc741f176caf85a766d18caf68b19a171fe9a4"
+    },
+    {
       "title": "store.store.spend",
       "datum": {
         "title": "datum",
@@ -119,6 +144,12 @@
     },
     "Int": {
       "dataType": "integer"
+    },
+    "List<aiken/crypto/VerificationKeyHash>": {
+      "dataType": "list",
+      "items": {
+        "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+      }
     },
     "Pairs<Data,Data>": {
       "title": "Pairs<Data, Data>",
@@ -180,6 +211,41 @@
           "title": "Minting",
           "dataType": "constructor",
           "index": 2,
+          "fields": []
+        }
+      ]
+    },
+    "multisig/Datum": {
+      "title": "Datum",
+      "anyOf": [
+        {
+          "title": "Datum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "owners",
+              "$ref": "#/definitions/List<aiken~1crypto~1VerificationKeyHash>"
+            },
+            {
+              "title": "threshold",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "recipient",
+              "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+            }
+          ]
+        }
+      ]
+    },
+    "multisig/Redeemer": {
+      "title": "Redeemer",
+      "anyOf": [
+        {
+          "title": "Spend",
+          "dataType": "constructor",
+          "index": 0,
           "fields": []
         }
       ]
